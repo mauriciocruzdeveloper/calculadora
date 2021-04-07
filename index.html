@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>calculadora</title>
+	<link rel="stylesheet" href="css/estilos.css" type="text/css" media="screen"/>
+</head>
+<body>
+	<section>
+		
+		<article class="calculadora">
+			
+			<input type="text" name="visor" id="resultado"><br/>
+
+			<button type="button" id="siete" onclick="Ingresar(7)">7</button>
+			<button type="button" id="ocho" onclick="Ingresar(8)">8</button>
+			<button type="button" id="nueve" onclick="Ingresar(9)">9</button>
+			<button type="button" id="division" onclick="Ingresarop('/')">/</button><br/>
+
+			<button type="button" id="cuatro" onclick="Ingresar(4)">4</button>
+			<button type="button" id="cinco" onclick="Ingresar(5)">5</button>
+			<button type="button" id="seis" onclick="Ingresar(6)">6</button>
+			<button type="button" id="multiplicacion" onclick="Ingresarop('*')">*</button><br/>
+
+			<button type="button" id="uno" onclick="Ingresar(1)">1</button>
+			<button type="button" id="dos" onclick="Ingresar(2)">2</button>
+			<button type="button" id="tres" onclick="Ingresar(3)">3</button>
+			<button type="button" id="resta" onclick="Ingresarop('-')">-</button><br/>
+
+			<button type="button" id="cero" onclick="Ingresar(0)">0</button>
+			<button type="button"  id="borrar" onclick="borrar()">C</button>
+			<button type="button" id="igual" onclick="resul()">=</button>
+			<button type="button" id="suma" onclick="Ingresarop('+')">+</button>	
+
+		</article>
+		
+	</section>
+	
+	<script>
+		//declaro variables globales
+		var operador1= 0;
+		var operacion="";
+		var operador2= 0;
+		var resultado= 0;
+
+
+		//otorgar funcion a los botones nro
+
+		function Ingresar(nro) {
+			document.getElementById("resultado").value += nro;
+		};
+
+		//otorgar funcion a los botones operativos
+
+		function Ingresarop(op) {
+			operador1= parseInt(document.getElementById("resultado").value);
+			operacion= op;
+			document.getElementById("resultado").value = "";
+		};
+
+		function resul() {
+			operador2= parseInt(document.getElementById("resultado").value);
+			switch (operacion){
+				case "+":
+					resultado = parseInt (operador1) + parseInt (operador2); break;
+
+				case "-":
+					resultado = parseInt (operador1) - parseInt (operador2); break;
+
+				case "*":
+					resultado = parseInt (operador1) * parseInt (operador2); break;
+
+				case "/":
+					resultado = parseInt (operador1) / parseInt (operador2); break;
+
+			};
+			document.getElementById("resultado").value = resultado;
+		};
+
+		function borrar() {
+			document.getElementById("resultado").value = "";
+		};
+
+
+	</script>
+
+</body>
+</html>
